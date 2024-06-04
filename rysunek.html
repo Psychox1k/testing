@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        svg:first-of-type 
+        {
+            border: 1px solid black;
+        }
+        rect 
+        {
+            fill: darkgreen; 
+            stroke: red; 
+            stroke-width: 5;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <canvas id="plotno" width="700" height="300"></canvas>
+<hr>
+
+    <h1>Kod svg osadzony bezposrednio w kodzie strony WWW</h1>
+<svg width="220" height="170">
+<rect x="10" y="10" rx="10" ry="20" width="200" height="150"/>
+</svg> 
+<br>
+<svg width = "800" height="100">
+    <line x1="10" y1="20" x2="600" y2="20" stroke="black" stroke-width="4" />
+    <line x1="10" y1="60" x2="600" y2="60" stroke="black" stroke-width="4" stroke-dasharray="2,2">
+</svg>
+
+<svg width="900" height = "300">
+    <line x1="10" y1="100" x2="510" y2="100" stroke="red" stroke-width="8" stroke-dasharray="8,2,1" />
+    <ellipse cx="700" cy="100" rx="80" ry="80" style="fill:red;stroke:red;"/>
+    <ellipse cx="700" cy="100" rx="80" ry="40" style="fill:yellow;stroke:yellow;"/>
+
+</svg>
+
+
+<svg width = "500" height = "400">
+    <defs>
+        <g id="transformacja">
+            <ellipse cx ="250" cy="250" rx="100" ry="30" style="fill:rgba(0, 128, 0, 0.294);stroke:green;stroke-width:2;" />
+        </g>
+    </defs>
+    <use xlink:href="#transformacja"/>
+    <use xlink:href="#transformacja" transform ="rotate(-45 250 250)"/>
+    <use xlink:href="#transformacja" transform ="rotate(-90 250 250)"/>
+    <use xlink:href="#transformacja" transform ="rotate(-135 250 250)"/>
+</svg>
+
+
+    <script>
+        var plotno = document.getElementById("plotno");
+        var kontekst = plotno.getContext("2d");
+        kontekst.strokeStyle = "black";
+        kontekst.lineWidth = 5;
+
+        function robot(x, y) {
+            kontekst.fillRect(x, y, 50,50); /*glowa*/
+            kontekst.fillRect(x+20, y+50, 10,30);
+            kontekst.fillRect(x-50, y+70, 150,10);
+            kontekst.fillRect(x-20, y+80, 90,80);
+            kontekst.fillRect(x-20,y+160, 10,40);
+            kontekst.fillRect(x+60,y+160, 10,40);
+        }
+
+        function flag(x,y)
+        {
+            kontekst.fillStyle = "red";
+            kontekst.fillRect(x,y,50,100);
+            kontekst.fillStyle = "green";
+            kontekst.fillRect(x+50,y, 50,100);
+            kontekst.fillStyle = "blue";
+            kontekst.fillRect(x+100, y, 50,100);
+
+        }
+      
+
+        var x1 = 100;
+        var y1 = 40;
+
+      
+        var x2 = 300;
+        var y2 = 90;
+
+        
+        robot(x1, y1);
+        flag(x2,y2);
+    </script>
+</body>
+</html>
